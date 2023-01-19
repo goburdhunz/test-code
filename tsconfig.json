@@ -24,7 +24,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/index.tsx",
-    "pages/_app.tsx"
+    "pages/_app.tsx",
+    "utils/apiUtils.spec.ts"
   ],
   "exclude": [
     "node_modules"
