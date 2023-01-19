@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cards component should render correctly 1`] = `
+<div>
+  <div>
+    <img
+      alt="rocketLogo"
+      data-nimg="1"
+      decoding="async"
+      height="70"
+      src="/_next/image?url=https%3A%2F%2Fimages2.imgbox.com%2F94%2Ff2%2FNN6Ph45r_o.png&w=256&q=75"
+      srcset="/_next/image?url=https%3A%2F%2Fimages2.imgbox.com%2F94%2Ff2%2FNN6Ph45r_o.png&w=96&q=75 1x, /_next/image?url=https%3A%2F%2Fimages2.imgbox.com%2F94%2Ff2%2FNN6Ph45r_o.png&w=256&q=75 2x"
+      style="color: transparent;"
+      width="70"
+    />
+    <span>
+      Name: 
+      falcon8
+    </span>
+    <span>
+      Core Serial: 
+      5e9e289df35918033d3b2623
+    </span>
+    <span>
+      Date: 
+      2006-03-24
+    </span>
+    <span>
+      Payload Id: 
+      5eb0e4b5b6c3bb0006eeb1e1
+    </span>
+    <span>
+      Payload type: 
+      Satellite
+    </span>
+    <span>
+      Successful Launch: 
+      Yes
+    </span>
+    <span />
+  </div>
+</div>
+`;
