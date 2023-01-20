@@ -1,5 +1,5 @@
 import Cards from './Cards';
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 jest.mock('./Cards.module.css')
 
@@ -16,8 +16,45 @@ const props = {
 }
 
 describe('Cards component', () => {
-    it('should render correctly', async () => {
+    it('should render correctly', () => {
         const { container } = render(<Cards {...props} />)
         expect(container).toMatchSnapshot()
+    })
+    it('should have right values present', () => {
+        render(<Cards {...props} />)
+
+        const name = screen.getByText(/Name/)
+        const core = screen.getByText(/Core Serial/)
+        const Date = screen.getByText(/Date/)
+        const payLoadId = screen.getByText(/Payload Id/)
+        const payLoadType = screen.getByText(/Payload type/)
+        const Success = screen.getByText(/Successful Launch/)
+
+        expect(name).toBeTruthy()
+        expect(core).toBeTruthy()
+        expect(Date).toBeTruthy()
+        expect(payLoadId).toBeTruthy()
+        expect(payLoadType).toBeTruthy()
+        expect(Success).toBeTruthy()
+    })
+
+    it('should render failures if success is false', async () => {
+        const failureProps = {
+            ...props,
+            success: false,
+            failures: [{
+                reason: 'not enough fuel'
+            }]
+        }
+
+        render(<Cards {...failureProps} />)
+
+
+        const success = screen.getByText(/Successful Launch: No/)
+        const failure = screen.getByText(/Reason for Failure:not enough fuel/)
+
+
+        expect(success).toBeTruthy()
+        expect(failure).toBeTruthy()
     })
 })

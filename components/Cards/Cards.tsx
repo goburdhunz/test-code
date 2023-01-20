@@ -1,13 +1,13 @@
 import React from 'react';
 import { LaunchResponseData } from '../../types/types'
 import Image from 'next/image';
-import style from './Cards.module.css';
+import styles from './Cards.module.css';
 
 const Cards = ({ name, date_utc, cores, payloads, success, failures, links: { patch: { small } } }: LaunchResponseData) => {
     const formattedUtcDate = date_utc?.split('T')?.[0]
     const showFailure = success ? "" : `Reason for Failure:${failures?.[0]?.reason}`
     return (
-        <div className={style.card}>
+        <div className={styles.card}>
             <Image priority src={small} alt="rocketLogo" width={70} height={70} />
             <span>Name: {name}</span>
             <span>Core Serial: {cores?.[0]?.core}</span>

@@ -29,9 +29,9 @@ interface Core {
 }
 
 interface Failure {
-    altitude: number;
+    altitude?: number;
     reason: string;
-    time: number;
+    time?: number;
 }
 
 interface Payloads {

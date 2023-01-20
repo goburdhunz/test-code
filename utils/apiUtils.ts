@@ -1,7 +1,7 @@
-import { LaunchResponseData } from '../types/types'
+import axios from 'axios'
 
 
-export const fetchSpaceXLaunchData = (setLaunchData: (responseData: LaunchResponseData[]) => void) => {
+export const fetchSpaceXLaunchData = () => {
     // passing in specific query options for page number, limit to 10 entries and a populate option 
     // which merges payloads data (specifically type/id) into the launches response => payloads field
     const dataOptions = {
@@ -18,17 +18,14 @@ export const fetchSpaceXLaunchData = (setLaunchData: (responseData: LaunchRespon
         }
     }
 
-    try {
-        fetch('https://api.spacexdata.com/v5/launches/query', {
-            method: 'POST', body: JSON.stringify(dataOptions),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => setLaunchData(data?.docs)
-            );
-    } catch (error) {
-        console.log('error', error)
-    }
+    return axios({
+        url: 'https://api.spacexdata.com/v5/launches/query',
+        method: 'post',
+        data: JSON.stringify(dataOptions),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then((response) => {
+        return response
+    })
 }
