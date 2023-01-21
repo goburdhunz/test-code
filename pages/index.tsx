@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react';
 import Cards from '../components/Cards/Cards';
 import styles from '../styles/Home.module.css';
@@ -9,20 +8,15 @@ import { fetchSpaceXLaunchData } from '../utils/apiUtils';
 
 
 export default function Home() {
-  const router = useRouter()
   const [launchData, setLaunchData] = useState<LaunchResponseData[]>([])
 
   useEffect(() => {
-    fetchSpaceXLaunchData().then((response => {
-      const docs = response?.data?.docs
-      setLaunchData(docs)
-    }))
-      .catch((error) => {
-        if (error?.message) {
-          console.log('error', error)
-          router.push('/_error_')
-        }
-      });
+    const fetchApi = async () => {
+      const resolvedValue = await fetchSpaceXLaunchData()
+      setLaunchData(resolvedValue?.data?.docs)
+    }
+
+    fetchApi()
   }, [])
 
 
